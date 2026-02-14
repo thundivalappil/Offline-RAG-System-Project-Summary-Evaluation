@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.pkl
+*.log
+
+# Virtual env
+.venv/
+venv/
+
+# Chroma DB + caches
+chroma_db/
+*.sqlite3
+.cache/
+**/.cache/
+
+# OS
+.DS_Store
+Thumbs.db
