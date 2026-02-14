@@ -1,45 +1,38 @@
-# yesbee4ai-offline-rag-chromadb
-
-Offline **RAG (Retrieval-Augmented Generation)** using **ChromaDB** + **Sentence-Transformers** embeddings.  
-No OpenAI key required — works fully offline.
-
-## What this repo does
-- Loads `.txt` files from `./docs/`
-- Splits text into chunks
-- Creates embeddings using `sentence-transformers/all-MiniLM-L6-v2`
-- Stores vectors in a persistent **ChromaDB** folder (`./chroma_db/`)
-- Retrieves top matches for a question and extracts the best answer sentence
-- Prints **Answer + Source citation**
-
-## Quickstart (Windows / PowerShell)
-
-### 1) Create and activate a virtual environment (recommended)
-```powershell
+yesbee4ai-offline-rag-chromadb
+Offline RAG (Retrieval-Augmented Generation) using ChromaDB and Sentence-Transformers embeddings.
+Runs fully offline — no OpenAI key required.
+Designed for privacy-first document retrieval and secure local AI workflows.
+Overview
+This repository implements a lightweight, modular Offline RAG system that:
+• Loads .txt files from ./docs/
+• Splits text into manageable chunks
+• Generates embeddings using sentence-transformers/all-MiniLM-L6-v2
+• Stores vectors in a persistent ChromaDB directory (./chroma_db/)
+• Retrieves top relevant matches for a question
+• Extracts the best answer sentence
+• Outputs Answer + Source citation
+All processing happens locally.
+Why Offline RAG?
+• No external API dependency
+• No data leakage
+• No usage costs
+• Suitable for MSMEs and internal knowledge systems
+• Fully CPU-compatible
+Quickstart (Windows / PowerShell)
+1) Create and activate a virtual environment
 cd D:\Projects\RAG_Project
 python -m venv .venv
 .\.venv\Scripts\activate
-```
-
-### 2) Install dependencies
-```powershell
+2) Install dependencies
 pip install -r requirements.txt
-```
-
-### 3) Add a document
-Put a `.txt` file in `docs/` (example provided: `docs/test.txt`).
-
-### 4) Run
-```powershell
+3) Add a document
+Place a .txt file inside the docs/ directory.
+Example provided: docs/test.txt
+4) Run the application
 python main.py
-```
-
-Ask:
-```
+Example query:
 What does RAG stand for?
-```
-
-## Repo structure
-```
+Repository Structure
 yesbee4ai-offline-rag-chromadb/
 ├─ main.py
 ├─ src/offline_rag/
@@ -53,17 +46,15 @@ yesbee4ai-offline-rag-chromadb/
 │  └─ test.txt
 ├─ requirements.txt
 └─ .gitignore
-```
+Notes
+• On first run, the embedding model (~80MB) will be downloaded and cached locally.
+• chroma_db/ is generated automatically and excluded from Git via .gitignore.
+Roadmap
+• Index-once logic (skip re-indexing if vectors already exist)
+• PDF support (pypdf) with page-level citations
+• Top-3 citation support with chunk identifiers
+• Evaluation script (eval/) for retrieval accuracy testing
+• Optional local LLM integration (future upgrade)
+License
+MIT
 
-## Notes
-- First run may download the embedding model once (~80MB) and cache it locally.
-- `chroma_db/` is excluded from git via `.gitignore` (it’s generated output).
-
-## Roadmap (next upgrades)
-- Index-once (skip re-indexing when `chroma_db/` already has data)
-- PDF support (`pypdf`) + page citations
-- Top-3 citations & chunk ids
-- Evaluation script (`eval/`) for accuracy checks
-
-## License
-MIT (add if you want)
