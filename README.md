@@ -5,6 +5,7 @@ Runs fully offline — No OpenAI key required.
 Designed for privacy-first document retrieval and secure local AI workflows.
  
 1. Overview
+   
 •	Loads .txt files from the ./docs/ directory
 •	Splits text into manageable semantic chunks
 •	Generates embeddings using sentence-transformers/all-MiniLM-L6-v2
@@ -15,6 +16,7 @@ Designed for privacy-first document retrieval and secure local AI workflows.
 
 All processing happens locally.
 2. Why Offline RAG?
+
 •	No external API dependency
 •	No data leakage risk
 •	No usage-based costs
@@ -22,11 +24,6 @@ All processing happens locally.
 •	Fully CPU-compatible
 3. Quickstart (Windows / PowerShell)
 Step 1: Create and activate a virtual environment
-cd D:\Projects\RAG_Project
-python -m venv .venv
-.\.venv\Scripts\activate
-Step 2: Install dependencies
-pip install -r requirements.txt
 Step 3: Add a document
 Place a .txt file inside the docs/ directory.
 Example: docs/test.txt
@@ -35,7 +32,10 @@ python main.py
 Example query:
 What does RAG stand for?
 4. Repository Structure
+
 yesbee4ai-offline-rag-chromadb/
+
+
 │
 ├─ main.py
 ├─ src/offline_rag/
@@ -51,16 +51,18 @@ yesbee4ai-offline-rag-chromadb/
 │
 ├─ requirements.txt
 └─ .gitignore
+
 5. Notes
+   
 •	On first run, the embedding model (~80MB) will download and cache locally.
 •	chroma_db/ is generated automatically and excluded from Git via .gitignore.
-6. Roadmap
+7. Roadmap
 •	Index-once logic (skip re-indexing if vectors already exist)
 •	PDF support (pypdf) with page-level citations
 •	Top-3 citation support with chunk identifiers
 •	Evaluation script (eval/) for retrieval accuracy testing
 •	Optional local LLM integration (future upgrade)
-7. License
+8. License
 MIT
 
 
